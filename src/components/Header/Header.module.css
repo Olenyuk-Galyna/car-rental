@@ -1,0 +1,21 @@
+.heder {
+  border-bottom: 1px solid var(--badges);
+  width: 1440px;
+  height: 68px;
+}
+
+.nav {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.menu:hover {
+  color: var(--button-hover);
+}
