@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./CarsList.module.css";
+import { useNavigate } from "react-router-dom";
 
 const carData = {
   id: "11a3ab35-07b8-4336-b06b-602cdc309f2c",
@@ -26,13 +27,14 @@ const carData = {
 };
 
 const CarsList = ({ list = [carData] }) => {
+  const navigate = useNavigate();
   return (
-    <ul>
+    <ul className={css.carsList}>
       {list.map((carItem) => {
         return (
-          <li>
+          <li className={css.carItem} key={carItem.id}>
             <img src={carItem.img} alt={carItem.brand} />
-            <div>
+            <div className={css.carsDescr}>
               <p className={css.carName}>
                 {carItem.brand}
                 <span className={css.carModel}>{carItem.model}</span>,{" "}
@@ -40,7 +42,15 @@ const CarsList = ({ list = [carData] }) => {
               </p>
               <p className={css.price}>${carItem.rentalPrice}</p>
             </div>
-            <button type="button">Read More</button>
+            <button
+              className={css.readMore}
+              type="button"
+              onClick={() => {
+                navigate(`/catalog/${carItem.id}`);
+              }}
+            >
+              Read More
+            </button>
           </li>
         );
       })}

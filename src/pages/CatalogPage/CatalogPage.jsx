@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Filters from "../../components/Filters/Filters";
 import CarsList from "../../components/CarsList/CarsList";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,16 +8,23 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
 
   const carsList = useSelector((state) => state.carsList.list);
-
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    dispatch(getCarsList());
-  }, []);
+    dispatch(getCarsList({ page }));
+  }, [page]);
 
   return (
     <div>
       <Filters />
       <CarsList list={carsList} />
-      <button type="submit">Load more</button>
+      <button
+        type="button"
+        onClick={() => {
+          setPage((prevPage) => prevPage + 1);
+        }}
+      >
+        Load more
+      </button>
     </div>
   );
 };

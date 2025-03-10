@@ -1,0 +1,43 @@
+.carsList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  margin: 0 auto;
+  gap: 48px 32px;
+}
+
+.carsDescr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carItem {
+  width: 276px;
+}
+
+.readMore {
+  display: flex;
+  border-radius: 12px;
+  border: none;
+  width: 276px;
+  height: 44px;
+  background: var(--button);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.carModel {
+  margin-left: 8px;
+  color: var(--button);
+}
+
+.carName {
+  display: flex;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+}

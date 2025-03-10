@@ -12,7 +12,7 @@ const HomePage = () => {
       </p>
       <button
         className={css.mainButton}
-        type="btn"
+        type="button"
         onClick={() => {
           navigate("/catalog");
         }}

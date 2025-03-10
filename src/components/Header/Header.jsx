@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 
 const Header = () => {
   return (
-    <header>
+    <header className={css.header}>
       <nav className={css.nav}>
         <NavLink to="/" className={css.menu}>
           Home
@@ -14,7 +14,7 @@ const Header = () => {
           Catalog
         </NavLink>
       </nav>
-      <div className={css.header}>
+      <div className={css.logo}>
         <Logo />
       </div>
     </header>

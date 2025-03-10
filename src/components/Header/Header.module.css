@@ -1,11 +1,19 @@
 .heder {
-  border-bottom: 1px solid var(--badges);
+  display: flex;
+
+  background: var(--badges);
   width: 1440px;
   height: 68px;
 }
 
+.logo {
+  padding: 26px 120px;
+}
+
 .nav {
   display: flex;
+  flex-direction: row;
+  padding: 24px 120px;
 }
 
 .menu {
@@ -14,6 +22,8 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--main);
+  padding: 24px 120px;
+  justify-content: space-between;
 }
 
 .menu:hover {
