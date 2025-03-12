@@ -5,18 +5,20 @@ import Logo from "../Logo/Logo";
 
 const Header = () => {
   return (
-    <header className={css.header}>
-      <nav className={css.nav}>
-        <NavLink to="/" className={css.menu}>
-          Home
-        </NavLink>
-        <NavLink to="/catalog" className={css.menu}>
-          Catalog
-        </NavLink>
+    <header>
+      <nav className={css.navContainer}>
+        <div>
+          <Logo />
+        </div>
+        <div className={css.menuContainer}>
+          <NavLink to="/" className={css.menuHeader}>
+            Home
+          </NavLink>
+          <NavLink to="/catalog" className={css.menuHeader}>
+            Catalog
+          </NavLink>
+        </div>
       </nav>
-      <div className={css.logo}>
-        <Logo />
-      </div>
     </header>
   );
 };

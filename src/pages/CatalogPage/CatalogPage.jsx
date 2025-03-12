@@ -3,6 +3,7 @@ import Filters from "../../components/Filters/Filters";
 import CarsList from "../../components/CarsList/CarsList";
 import { useDispatch, useSelector } from "react-redux";
 import { getCarsList } from "../../redux/carsList/carsListOperation";
+import css from "../CatalogPage/CatalogPage.module.css";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const CatalogPage = () => {
       <Filters />
       <CarsList list={carsList} />
       <button
+        className={css.loadMore}
         type="button"
         onClick={() => {
           setPage((prevPage) => prevPage + 1);

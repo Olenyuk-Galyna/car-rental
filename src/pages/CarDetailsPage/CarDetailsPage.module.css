@@ -1,0 +1,61 @@
+.formInputs {
+  flex-wrap: wrap;
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  width: 640px;
+  height: 488px;
+  padding: 32px;
+  background: var(--white);
+}
+
+.carTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  gap: 8px;
+}
+
+.subTitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  gap: 24px;
+}
+
+.formInputs {
+  border-radius: 12px;
+  padding: 14px 20px;
+  width: 576px;
+  height: 280px;
+  background: var(--inputs);
+  gap: 16px;
+}
+
+.fieldComment {
+  border-radius: 12px;
+  padding: 12px 20px 56px 20px;
+  width: 576px;
+  height: 88px;
+  background: var(--inputs);
+}
+
+.btnInputForm {
+  display: flex;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--white);
+  width: 156px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: var(--button);
+  margin: 0 auto;
+}
+.btnInputForm:hover {
+  background: var(--button-hover);
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import css from "./Loader.module.css";
-import { RotatingLines } from "react-spinner";
+import { BarLoader } from "react-spinners";
 
 const Loader = () => {
   return (
     <div className={css.loaderWrapper}>
-      <RotatingLines
+      <BarLoader
         visible={true}
         height="96"
         width="96"

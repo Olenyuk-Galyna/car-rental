@@ -1,6 +1,4 @@
 .logo {
   display: flex;
-  width: 104px;
-  height: 16px;
-  margin-bottom: 26px;
+  padding: 24px 120px;
 }
