@@ -35,7 +35,7 @@ const Filters = () => {
         ></input>
       </label>
       <label>
-        <span className={css.carMileage}>Сar mileage / km</span>
+        <span className={css.carMileage}>Car mileage / km</span>
         <input
           className={css.carMileageFrom}
           type="text"

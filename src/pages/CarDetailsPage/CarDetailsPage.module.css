@@ -1,4 +1,24 @@
-.formInputs {
+.container {
+  display: flex;
+  gap: 72px;
+  width: 1440px;
+  margin: 0 auto;
+  padding: 84px 120px 104px;
+}
+
+.imgFormWraper {
+  width: 640px;
+}
+
+.carBrand {
+  border-radius: 19px;
+  width: 640px;
+  height: 512px;
+  background: url("path_to_image");
+  margin-bottom: 40px;
+}
+
+.formConnected {
   flex-wrap: wrap;
   border: 1px solid var(--gray-light);
   border-radius: 10px;
@@ -13,7 +33,7 @@
   font-size: 20px;
   line-height: 120%;
   color: var(--main);
-  gap: 8px;
+  padding-bottom: 8px;
 }
 
 .subTitle {
@@ -21,24 +41,27 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--gray);
-  gap: 24px;
+  padding-bottom: 24px;
 }
 
-.formInputs {
+.fieldInput {
   border-radius: 12px;
+  border: none;
   padding: 14px 20px;
   width: 576px;
-  height: 280px;
+  height: 48px;
   background: var(--inputs);
-  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .fieldComment {
   border-radius: 12px;
+  border: none;
   padding: 12px 20px 56px 20px;
   width: 576px;
   height: 88px;
   background: var(--inputs);
+  margin-bottom: 24px;
 }
 
 .btnInputForm {
@@ -55,7 +78,80 @@
   justify-content: center;
   background: var(--button);
   margin: 0 auto;
+  cursor: pointer;
 }
 .btnInputForm:hover {
   background: var(--button-hover);
+}
+
+.descrWraper {
+  width: 488px;
+}
+
+.contentWrap {
+  margin-bottom: 68px;
+}
+
+.contentBlockWrap {
+  margin-bottom: 110px;
+}
+
+.carInfoDetails {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 20px;
+}
+svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--main);
+}
+
+.mainTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.idTitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  padding-left: 16px;
+}
+
+.carInfo {
+  margin-bottom: 16px;
+}
+
+.infoContent {
+  margin-bottom: 16px;
+}
+
+.addressLocation {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  margin-bottom: 16px;
+}
+
+.rentalPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+
+.carDescr {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
 }

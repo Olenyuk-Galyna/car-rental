@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   margin: 80px auto 124px;
+  cursor: pointer;
 }
 .loadMore:hover {
   border: 1px solid var(--button-hover);
