@@ -6,31 +6,11 @@ import clsx from "clsx";
 import axios from "axios";
 import { getCarsList } from "../../redux/carsList/carsListOperation";
 
-const brands = [
-  "Aston Martin",
-  "Audi",
-  "BMW",
-  "Bentley",
-  "Buick",
-  "Chevrolet",
-  "Chrysler",
-  "GMC",
-  "HUMMER",
-  "Hyundai",
-  "Kia",
-  "Lamborghini",
-  "Land Rover",
-  "Lincoln",
-  "MINI",
-  "Mercedes-Benz",
-  "Mitsubishi",
-  "Nissan",
-  "Pontiac",
-  "Subaru",
-  "Volvo",
-];
-
-const prices = ["30", "40", "50", "60", "70", "80"];
+const prices = Array(20)
+  .fill(null)
+  .map((_, idx) => {
+    return (idx + 1) * 10;
+  });
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -48,6 +28,10 @@ const Filters = () => {
     dispatch(setFilterAction({ name: "brand", value: brand }));
   };
 
+  const handleChangePrice = (price) => {
+    dispatch(setFilterAction({ name: "price", value: price }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getCarsList({ page: 1, ...filter }));
@@ -62,6 +46,7 @@ const Filters = () => {
         console.log(err.message);
       });
   }, []);
+
   return (
     <div>
       <form className={css.catalogBloc} onSubmit={handleSubmit}>
@@ -95,7 +80,7 @@ const Filters = () => {
           )}
         </div>
 
-        <div>
+        <div className={css.priceWrap}>
           <label>
             <span className={css.hourPrice}>Price/ 1 hour</span>
           </label>
@@ -104,7 +89,7 @@ const Filters = () => {
             className={css.choosePrice}
             onClick={() => setIsPriceOpen(!isPriceOpen)}
           >
-            {filter.rentalPrice || "Price/ 1 hour"}
+            {filter.rentalPrice || "Choose Price"}
             <svg className={clsx(css.arrowIcon, isPriceOpen && css.rotate)}>
               <use href="/public/icons/sprite.svg#icon-check-default"></use>
             </svg>
@@ -115,7 +100,7 @@ const Filters = () => {
               {prices.map((price) => (
                 <li
                   key={price}
-                  // onClick={() => handleChangePrice(price)}
+                  onClick={() => handleChangePrice(price)}
                   className={css.dropdownItem}
                 >
                   {price}
@@ -124,27 +109,32 @@ const Filters = () => {
             </ul>
           )}
         </div>
+        <div className={css.mileagWrap}>
+          <div>
+            <label>
+              <span className={css.carMileage}>Car mileage / km</span>
+            </label>
+            <input
+              className={css.carMileageFrom}
+              type="text"
+              name="minMileage"
+              value={filter.minMileage}
+              onChange={handleChange}
+              placeholder="From"
+            ></input>
+          </div>
 
-        <label>
-          <span className={css.carMileage}>Car mileage / km</span>
-        </label>
-        <input
-          className={css.carMileageFrom}
-          type="text"
-          name="minMileage"
-          value={filter.minMileage}
-          onChange={handleChange}
-          placeholder="From"
-        ></input>
-
-        <input
-          className={css.carMileageTo}
-          type="text"
-          name="maxMileage"
-          value={filter.maxMileage}
-          onChange={handleChange}
-          placeholder="To"
-        ></input>
+          <div>
+            <input
+              className={css.carMileageTo}
+              type="text"
+              name="maxMileage"
+              value={filter.maxMileage}
+              onChange={handleChange}
+              placeholder="To"
+            ></input>
+          </div>
+        </div>
 
         <button className={css.btnSearch} type="submit">
           Search

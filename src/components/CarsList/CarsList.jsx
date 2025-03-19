@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./CarsList.module.css";
 import { useNavigate } from "react-router-dom";
 import FavoriteBtn from "../FavoriteBtn/FavoriteBtn";
@@ -29,13 +29,42 @@ const carData = {
 
 const CarsList = ({ list = [carData] }) => {
   const navigate = useNavigate();
+  const [favorite, setFavorite] = useState(
+    () => JSON.parse(localStorage.getItem("favorite")) || []
+  );
+
+  const handleFavorite = (id) => {
+    console.log("handleFavorite");
+    const favoriteListJson = localStorage.getItem("favorite");
+    const favoriteList = JSON.parse(favoriteListJson) || [];
+    const isIdExist = favoriteList.includes(id);
+    let result = [];
+    if (isIdExist) {
+      result = favoriteList.filter((favoriteId) => {
+        return favoriteId !== id;
+      });
+    } else {
+      favoriteList.push(id);
+      result = favoriteList;
+    }
+    localStorage.setItem("favorite", JSON.stringify(result));
+    setFavorite(JSON.stringify(result));
+  };
+
+  const getIsFavorite = (id) => {
+    return favorite.includes(id);
+  };
+
   return (
     <ul className={css.carsList}>
       {list.map((carItem) => {
         return (
           <li className={css.carItem} key={carItem.id}>
             <img src={carItem.img} alt={carItem.brand} />
-            <FavoriteBtn isFavorite={true} />
+            <FavoriteBtn
+              isFavorite={getIsFavorite(carItem.id)}
+              onClick={() => handleFavorite(carItem.id)}
+            />
             <div className={css.carsDescr}>
               <p className={css.carName}>
                 {carItem.brand}

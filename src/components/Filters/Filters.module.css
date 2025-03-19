@@ -1,5 +1,6 @@
 .catalogBloc {
   display: flex;
+  gap: 16px;
   width: 924px;
   height: 68px;
   justify-content: center;
@@ -24,11 +25,26 @@
   padding: 12px 16px;
   width: 204px;
   height: 44px;
+  background: var(--inputs);
+}
+
+.choosePrice {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 16px;
+  width: 204px;
+  height: 44px;
+  background: var(--inputs);
 }
 
 .arrowIcon {
   display: flex;
   margin-left: 32px;
+  width: 16px;
+  height: 16px;
+  stroke: var(--main);
 }
 .arrowIcon.rotate {
   transform: rotate(180deg);
@@ -41,27 +57,16 @@
   color: var(--gray);
   margin-left: 16px;
 }
-svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--main);
-}
-.choosePrice {
-  border-radius: 12px;
-  border: none;
-  padding: 12px 16px;
-  width: 204px;
-  height: 44px;
-  margin-left: 16px;
-}
 
+.mileagWrap {
+  display: flex;
+}
 .carMileage {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 12px;
   line-height: 133%;
   color: var(--gray);
-  margin-left: 16px;
 }
 .carMileageTo {
   margin-top: 24px;
@@ -87,11 +92,11 @@ svg {
 
 .carMileageFrom {
   border-radius: 12px 0 0 12px;
+  border-right: 1px solid var(--gray-light);
   border: none;
   padding: 12px 24px;
   width: 160px;
   height: 44px;
-  margin-left: 16px;
 }
 
 .carMileageTo {
@@ -110,7 +115,8 @@ input:focus {
   outline: 1px solid var(--button-hover);
 }
 
-.brandWrap {
+.brandWrap,
+.priceWrap {
   position: relative;
 }
 .dropdownList {

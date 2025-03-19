@@ -47,7 +47,6 @@ const CarDetailsPage = () => {
         <div className={css.imgFormWraper}>
           <div className={css.carBrand}>
             <img src={carInfo.img} alt={carInfo.brand} />
-            {/* <FavoriteBtn isFavorite={true} /> */}
           </div>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form className={css.formConnected}>
@@ -69,7 +68,7 @@ const CarDetailsPage = () => {
               />
               <Field
                 className={css.fieldInput}
-                type="text"
+                type="date"
                 name="date"
                 placeholder="Booking date"
               />
@@ -89,7 +88,7 @@ const CarDetailsPage = () => {
           <div className={css.contentWrap}>
             <p className={css.mainTitle}>
               {carInfo.brand} {carInfo.model}, {carInfo.year}
-              <span className={css.idTitle}>id:9582</span>
+              <span className={css.idTitle}>id: {carId.slice(0, 4)}</span>
             </p>
             <p className={css.carInfo}>
               <svg>
@@ -106,21 +105,21 @@ const CarDetailsPage = () => {
             <p className={css.carDescr}>{carInfo.description}</p>
           </div>
           <div className={css.contentBlockWrap}>
+            <p className={css.carInfoDetails}>Rental Conditions:</p>
             <ul>
-              <p className={css.carInfoDetails}>Rental Conditions:</p>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-                <span> {carInfo.rentalConditions}Minimum age: 25 </span>
-              </li>
-              <li className={css.infoContent}>Security deposite required</li>
-              <li>Valid driver’s license</li>
+              {carInfo.rentalConditions.map((el) => (
+                <li>
+                  <svg>
+                    <use href="/public/icons/sprite.svg#icon-check-circle"></use>
+                  </svg>
+                  <span> {el} </span>
+                </li>
+              ))}
             </ul>
           </div>
           <div className={css.contentBlockWrap}>
+            <p className={css.carInfoDetails}>Car Specifications:</p>
             <ul>
-              <p className={css.carInfoDetails}>Car Specifications:</p>
               <li>
                 <svg>
                   <use href="/public/icons/sprite.svg#icon-calendar"></use>
@@ -148,40 +147,20 @@ const CarDetailsPage = () => {
             </ul>
           </div>
           <div className={css.contentBlockWrap}>
+            <p className={css.carInfoDetails}>
+              Accessories and functionalities:
+            </p>
             <ul>
-              <p className={css.carInfoDetails}>
-                Accessories and functionalities:
-              </p>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-              </li>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-              </li>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-              </li>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-              </li>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-              </li>
-              <li>
-                <svg>
-                  <use href="/public/icons/sprite.svg#icon-check-circle"></use>
-                </svg>
-              </li>
+              {[...carInfo.accessories, ...carInfo.functionalities].map(
+                (el) => (
+                  <li>
+                    <svg>
+                      <use href="/public/icons/sprite.svg#icon-check-circle"></use>
+                    </svg>
+                    <span> {el} </span>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
