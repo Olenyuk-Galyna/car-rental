@@ -1,41 +1,133 @@
 import { useDispatch, useSelector } from "react-redux";
 import css from "./Filters.module.css";
 import { setFilterAction } from "../../redux/filters/filtersSlice";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
+import axios from "axios";
+import { getCarsList } from "../../redux/carsList/carsListOperation";
+
+const brands = [
+  "Aston Martin",
+  "Audi",
+  "BMW",
+  "Bentley",
+  "Buick",
+  "Chevrolet",
+  "Chrysler",
+  "GMC",
+  "HUMMER",
+  "Hyundai",
+  "Kia",
+  "Lamborghini",
+  "Land Rover",
+  "Lincoln",
+  "MINI",
+  "Mercedes-Benz",
+  "Mitsubishi",
+  "Nissan",
+  "Pontiac",
+  "Subaru",
+  "Volvo",
+];
+
+const prices = ["30", "40", "50", "60", "70", "80"];
 
 const Filters = () => {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.filters);
+  const [isBrandOpen, setIsBrandOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
+  const [brands, setBrands] = useState([]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     dispatch(setFilterAction({ name, value }));
   };
 
+  const handleChangeBrand = (brand) => {
+    dispatch(setFilterAction({ name: "brand", value: brand }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getCarsList({ page: 1, ...filter }));
+  };
+  useEffect(() => {
+    axios
+      .get("https://car-rental-api.goit.global/brands")
+      .then(({ data }) => {
+        setBrands(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
   return (
-    <form className={css.catalogBloc}>
-      <label>
-        <span className={css.carBrand}>Car brand</span>
-        <input
-          className={css.chooseBrand}
-          type="text"
-          name="brand"
-          value={filter.brand}
-          onChange={handleChange}
-          placeholder="Choose a brand"
-        ></input>
-      </label>
-      <label>
-        <span className={css.hourPrice}>Price/ 1 hour</span>
-        <input
-          className={css.choosePrice}
-          type="text"
-          name="rentalPrice"
-          value={filter.rentalPrice}
-          onChange={handleChange}
-          placeholder="Choose a price"
-        ></input>
-      </label>
-      <label>
-        <span className={css.carMileage}>Car mileage / km</span>
+    <div>
+      <form className={css.catalogBloc} onSubmit={handleSubmit}>
+        <div className={css.brandWrap}>
+          <label>
+            <span className={css.carBrand}>Car brand</span>
+          </label>
+
+          <div
+            className={css.chooseBrand}
+            onClick={() => setIsBrandOpen(!isBrandOpen)}
+          >
+            {filter.brand || "Choose a brand"}
+            <svg className={clsx(css.arrowIcon, isBrandOpen && css.rotate)}>
+              <use href="/public/icons/sprite.svg#icon-check-default"></use>
+            </svg>
+          </div>
+
+          {isBrandOpen && brands.length > 0 && (
+            <ul className={css.dropdownList}>
+              {brands.map((brand) => (
+                <li
+                  key={brand}
+                  onClick={() => handleChangeBrand(brand)}
+                  className={css.dropdownItem}
+                >
+                  {brand}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div>
+          <label>
+            <span className={css.hourPrice}>Price/ 1 hour</span>
+          </label>
+
+          <div
+            className={css.choosePrice}
+            onClick={() => setIsPriceOpen(!isPriceOpen)}
+          >
+            {filter.rentalPrice || "Price/ 1 hour"}
+            <svg className={clsx(css.arrowIcon, isPriceOpen && css.rotate)}>
+              <use href="/public/icons/sprite.svg#icon-check-default"></use>
+            </svg>
+          </div>
+
+          {isPriceOpen && (
+            <ul className={css.dropdownList}>
+              {prices.map((price) => (
+                <li
+                  key={price}
+                  // onClick={() => handleChangePrice(price)}
+                  className={css.dropdownItem}
+                >
+                  {price}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <label>
+          <span className={css.carMileage}>Car mileage / km</span>
+        </label>
         <input
           className={css.carMileageFrom}
           type="text"
@@ -44,21 +136,21 @@ const Filters = () => {
           onChange={handleChange}
           placeholder="From"
         ></input>
-      </label>
 
-      <input
-        className={css.carMileageTo}
-        type="text"
-        name="maxMileage"
-        value={filter.maxMileage}
-        onChange={handleChange}
-        placeholder="To"
-      ></input>
+        <input
+          className={css.carMileageTo}
+          type="text"
+          name="maxMileage"
+          value={filter.maxMileage}
+          onChange={handleChange}
+          placeholder="To"
+        ></input>
 
-      <button className={css.btnSearch} type="submit">
-        Search
-      </button>
-    </form>
+        <button className={css.btnSearch} type="submit">
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
 

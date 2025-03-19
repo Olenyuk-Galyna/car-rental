@@ -6,7 +6,7 @@ const carsListSlice = createSlice({
   initialState: { list: [] },
   extraReducers: (builder) =>
     builder.addCase(getCarsList.fulfilled, (state, action) => {
-      state.list = [...state.list, ...action.payload.cars];
+      state.list = [...action.payload.cars];
     }),
 });
 

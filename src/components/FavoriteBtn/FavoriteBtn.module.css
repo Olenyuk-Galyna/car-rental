@@ -1,0 +1,7 @@
+.favoriteBtn {
+  border: none;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  stroke: var(--main);
+}

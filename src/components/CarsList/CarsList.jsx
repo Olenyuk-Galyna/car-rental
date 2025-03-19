@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./CarsList.module.css";
 import { useNavigate } from "react-router-dom";
+import FavoriteBtn from "../FavoriteBtn/FavoriteBtn";
 
 const carData = {
   id: "11a3ab35-07b8-4336-b06b-602cdc309f2c",
@@ -34,6 +35,7 @@ const CarsList = ({ list = [carData] }) => {
         return (
           <li className={css.carItem} key={carItem.id}>
             <img src={carItem.img} alt={carItem.brand} />
+            <FavoriteBtn isFavorite={true} />
             <div className={css.carsDescr}>
               <p className={css.carName}>
                 {carItem.brand}

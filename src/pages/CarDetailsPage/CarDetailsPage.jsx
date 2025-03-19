@@ -3,30 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import css from "./CarDetailsPage.module.css";
 import { Formik, Form, Field } from "formik";
-
-// const carInfo = [
-//   "Aston Martin",
-//   "Audi",
-//   "BMW",
-//   "Bentley",
-//   "Buick",
-//   "Chevrolet",
-//   "Chrysler",
-//   "GMC",
-//   "HUMMER",
-//   "Hyundai",
-//   "Kia",
-//   "Lamborghini",
-//   "Land Rover",
-//   "Lincoln",
-//   "MINI",
-//   "Mercedes-Benz",
-//   "Mitsubishi",
-//   "Nissan",
-//   "Pontiac",
-//   "Subaru",
-//   "Volvo",
-// ];
+// import FavoriteBtn from "../../components/FavoriteBtn/FavoriteBtn";
 
 const makeLocation = (fullLocation) => {
   const splitedLocation = fullLocation.split(", ");
@@ -34,7 +11,6 @@ const makeLocation = (fullLocation) => {
 };
 
 const CarDetailsPage = () => {
-  // const carsList = useSelector((state) => state.carsList.list);
   const { carId } = useParams();
   const [carInfo, setCarInfo] = useState(null);
 
@@ -71,6 +47,7 @@ const CarDetailsPage = () => {
         <div className={css.imgFormWraper}>
           <div className={css.carBrand}>
             <img src={carInfo.img} alt={carInfo.brand} />
+            {/* <FavoriteBtn isFavorite={true} /> */}
           </div>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form className={css.formConnected}>
@@ -115,7 +92,7 @@ const CarDetailsPage = () => {
               <span className={css.idTitle}>id:9582</span>
             </p>
             <p className={css.carInfo}>
-              <svg className={css.iconLocation}>
+              <svg>
                 <use href="/public/icons/sprite.svg#icon-location"></use>
               </svg>
               <span className={css.addressLocation}>
@@ -132,7 +109,7 @@ const CarDetailsPage = () => {
             <ul>
               <p className={css.carInfoDetails}>Rental Conditions:</p>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
                 <span> {carInfo.rentalConditions}Minimum age: 25 </span>
@@ -145,25 +122,25 @@ const CarDetailsPage = () => {
             <ul>
               <p className={css.carInfoDetails}>Car Specifications:</p>
               <li>
-                <svg className={css.iconCalendar}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-calendar"></use>
                 </svg>
                 <span> Year: {carInfo.year} </span>
               </li>
               <li>
-                <svg className={css.iconCar}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-car"></use>
                 </svg>
                 <span> Type: {carInfo.tupe}</span>
               </li>
               <li>
-                <svg className={css.iconPump}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-pump"></use>
                 </svg>
                 <span> Fuel Consumption: {carInfo.fuelConsumption}</span>
               </li>
               <li>
-                <svg className={css.iconSettings}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-settings"></use>
                 </svg>
                 <span> Engine Size: {carInfo.engineSize}</span>
@@ -176,32 +153,32 @@ const CarDetailsPage = () => {
                 Accessories and functionalities:
               </p>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
               </li>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
               </li>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
               </li>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
               </li>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
               </li>
               <li>
-                <svg className={css.iconCheckCircle}>
+                <svg>
                   <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                 </svg>
               </li>

@@ -3,6 +3,7 @@
   width: 924px;
   height: 68px;
   justify-content: center;
+  margin-top: 84px;
   margin-left: 258px;
   margin-bottom: 56px;
 }
@@ -16,11 +17,21 @@
 }
 
 .chooseBrand {
+  display: flex;
+  justify-content: space-between;
   border-radius: 12px;
   border: none;
   padding: 12px 16px;
   width: 204px;
   height: 44px;
+}
+
+.arrowIcon {
+  display: flex;
+  margin-left: 32px;
+}
+.arrowIcon.rotate {
+  transform: rotate(180deg);
 }
 
 .hourPrice {
@@ -30,7 +41,11 @@
   color: var(--gray);
   margin-left: 16px;
 }
-
+svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--main);
+}
 .choosePrice {
   border-radius: 12px;
   border: none;
@@ -93,4 +108,35 @@ input {
 input:hover,
 input:focus {
   outline: 1px solid var(--button-hover);
+}
+
+.brandWrap {
+  position: relative;
+}
+.dropdownList {
+  position: absolute;
+  top: calc(100% + 5px);
+  width: 200px;
+  left: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f7f7f7;
+  color: #8d929a;
+  text-align: left;
+  padding-right: 18px;
+  list-style: none;
+  margin-top: 5px;
+  z-index: 10;
+  max-height: 272px;
+  overflow-y: auto;
+}
+
+.dropdownItem {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+.dropdownItem:hover,
+.dropdownItem:focus {
+  color: black;
 }
