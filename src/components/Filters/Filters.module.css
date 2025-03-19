@@ -92,13 +92,14 @@
 
 .carMileageFrom {
   border-radius: 12px 0 0 12px;
-  border-right: 1px solid var(--gray-light);
   border: none;
   padding: 12px 24px;
   width: 160px;
   height: 44px;
 }
-
+input.carMileageFrom {
+  border-right: 1px solid var(--gray-light);
+}
 .carMileageTo {
   border-radius: 0 12px 12px 0;
   border: none;

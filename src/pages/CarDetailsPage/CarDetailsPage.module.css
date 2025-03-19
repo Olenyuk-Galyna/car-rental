@@ -78,6 +78,7 @@
   justify-content: center;
   background: var(--button);
   margin: 0 auto;
+  margin-bottom: 32px;
   cursor: pointer;
 }
 .btnInputForm:hover {
@@ -88,12 +89,25 @@
   width: 488px;
 }
 
-.contentWrap {
-  margin-bottom: 68px;
+.containerBlocWrap {
+  margin-top: 60px;
+}
+.contentBlocWrap {
+  margin-top: 100px;
+}
+.rentalConditionsList {
+  margin-bottom: 16px;
 }
 
-.contentBlockWrap {
-  margin-bottom: 110px;
+.carSpecificationsList {
+  margin-top: 100px;
+}
+.carSpecificationsList li {
+  margin-bottom: 16px;
+}
+
+.accessoriesFuncionalList {
+  margin-bottom: 16px;
 }
 
 .carInfoDetails {
@@ -103,6 +117,7 @@
   color: var(--main);
   margin-bottom: 20px;
 }
+
 svg {
   width: 16px;
   height: 16px;

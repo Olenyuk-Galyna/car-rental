@@ -85,7 +85,7 @@ const CarDetailsPage = () => {
           </Formik>
         </div>
         <div className={css.descrWraper}>
-          <div className={css.contentWrap}>
+          <div>
             <p className={css.mainTitle}>
               {carInfo.brand} {carInfo.model}, {carInfo.year}
               <span className={css.idTitle}>id: {carId.slice(0, 4)}</span>
@@ -104,11 +104,12 @@ const CarDetailsPage = () => {
             </p>
             <p className={css.carDescr}>{carInfo.description}</p>
           </div>
-          <div className={css.contentBlockWrap}>
+
+          <div className={css.containerBlocWrap}>
             <p className={css.carInfoDetails}>Rental Conditions:</p>
             <ul>
               {carInfo.rentalConditions.map((el) => (
-                <li>
+                <li className={css.rentalConditionsList}>
                   <svg>
                     <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                   </svg>
@@ -117,7 +118,7 @@ const CarDetailsPage = () => {
               ))}
             </ul>
           </div>
-          <div className={css.contentBlockWrap}>
+          <div className={css.carSpecificationsList}>
             <p className={css.carInfoDetails}>Car Specifications:</p>
             <ul>
               <li>
@@ -146,14 +147,14 @@ const CarDetailsPage = () => {
               </li>
             </ul>
           </div>
-          <div className={css.contentBlockWrap}>
+          <div className={css.contentBlocWrap}>
             <p className={css.carInfoDetails}>
               Accessories and functionalities:
             </p>
             <ul>
               {[...carInfo.accessories, ...carInfo.functionalities].map(
                 (el) => (
-                  <li>
+                  <li className={css.accessoriesFuncionalList}>
                     <svg>
                       <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                     </svg>
