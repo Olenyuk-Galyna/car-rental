@@ -12,8 +12,13 @@
 }
 
 .carItem {
-  position: relative;
   width: 276px;
+}
+
+.imageWraper {
+  position: relative;
+  border-radius: 19px;
+  overflow: hidden;
 }
 
 .readMore {

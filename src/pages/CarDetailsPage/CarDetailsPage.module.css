@@ -16,6 +16,14 @@
   height: 512px;
   background: url("path_to_image");
   margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.calendarWraper {
+  border: 1px solid var(--button) !important;
+}
+.calendarDate {
+  border-radius: 50% !important;
 }
 
 .formConnected {

@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import css from "./CarDetailsPage.module.css";
 import { Formik, Form, Field } from "formik";
-// import FavoriteBtn from "../../components/FavoriteBtn/FavoriteBtn";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./DatePicker.css";
 
 const makeLocation = (fullLocation) => {
   const splitedLocation = fullLocation.split(", ");
@@ -17,14 +19,13 @@ const CarDetailsPage = () => {
   const initialValues = {
     username: "",
     email: "",
-    date: "",
+    date: null,
     message: "",
   };
 
   const handleSubmit = (values, actions) => {
     console.log(values);
     console.log(actions);
-    // actions.carInfo();
   };
 
   useEffect(() => {
@@ -40,7 +41,6 @@ const CarDetailsPage = () => {
         console.log(err.message);
       });
   }, []);
-  console.log("carInfo", carInfo);
   return (
     carInfo && (
       <div className={css.container}>
@@ -66,12 +66,30 @@ const CarDetailsPage = () => {
                 name="email"
                 placeholder="Email*"
               />
-              <Field
-                className={css.fieldInput}
-                type="date"
-                name="date"
-                placeholder="Booking date"
-              />
+              <Field name="date">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                  meta,
+                }) => {
+                  return (
+                    <div>
+                      <DatePicker
+                        selected={field.value}
+                        onChange={(date) => setFieldValue(field.name, date)}
+                        placeholderText="Booking date"
+                        className={css.fieldInput}
+                        dayClassName={(date) => css.calendarDate}
+                        calendarClassName={"calendar"}
+                        // calendarContainer={({ hildren }) => (
+                        //   <div className={css.calendarWraper}>{children}</div>
+                        // )}
+                      />
+                    </div>
+                  );
+                }}
+              </Field>
+
               <Field
                 className={css.fieldComment}
                 type="text"
@@ -109,7 +127,7 @@ const CarDetailsPage = () => {
             <p className={css.carInfoDetails}>Rental Conditions:</p>
             <ul>
               {carInfo.rentalConditions.map((el) => (
-                <li className={css.rentalConditionsList}>
+                <li key={el} className={css.rentalConditionsList}>
                   <svg>
                     <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                   </svg>
@@ -154,7 +172,7 @@ const CarDetailsPage = () => {
             <ul>
               {[...carInfo.accessories, ...carInfo.functionalities].map(
                 (el) => (
-                  <li className={css.accessoriesFuncionalList}>
+                  <li key={el} className={css.accessoriesFuncionalList}>
                     <svg>
                       <use href="/public/icons/sprite.svg#icon-check-circle"></use>
                     </svg>

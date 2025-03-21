@@ -60,11 +60,13 @@ const CarsList = ({ list = [carData] }) => {
       {list.map((carItem) => {
         return (
           <li className={css.carItem} key={carItem.id}>
-            <img src={carItem.img} alt={carItem.brand} />
-            <FavoriteBtn
-              isFavorite={getIsFavorite(carItem.id)}
-              onClick={() => handleFavorite(carItem.id)}
-            />
+            <div className={css.imageWraper}>
+              <img src={carItem.img} alt={carItem.brand} />
+              <FavoriteBtn
+                isFavorite={getIsFavorite(carItem.id)}
+                onClick={() => handleFavorite(carItem.id)}
+              />
+            </div>
             <div className={css.carsDescr}>
               <p className={css.carName}>
                 {carItem.brand}

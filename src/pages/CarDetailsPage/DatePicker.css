@@ -1,0 +1,16 @@
+.calendar .react-datepicker__month-container {
+  border: 1px solid var(--button) !important;
+}
+
+.calendar .react-datepicker__header {
+  border-bottom: 1px solid var(--button);
+}
+
+.calendar
+  .react-datepicker__day
+  _calendarDate_1oehf_49
+  react-datepicker__day--021
+  react-datepicker__day--selected
+  react-datepicker__day--today {
+  background: var(--button);
+}
