@@ -52,6 +52,11 @@
   padding-bottom: 24px;
 }
 
+.inputWrap {
+  position: relative;
+  margin-bottom: 18px;
+}
+
 .fieldInput {
   border-radius: 12px;
   border: none;
@@ -59,7 +64,15 @@
   width: 576px;
   height: 48px;
   background: var(--inputs);
-  margin-bottom: 16px;
+}
+
+.error {
+  position: absolute;
+  top: calc(100%);
+  left: 0.5em;
+  color: red;
+  font-size: 0.8em;
+  font-weight: 700;
 }
 
 .fieldComment {

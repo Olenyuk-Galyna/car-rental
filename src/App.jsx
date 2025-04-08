@@ -4,6 +4,7 @@ import CatalogPage from "./pages/CatalogPage/CatalogPage";
 import CarDetailsPage from "./pages/CarDetailsPage/CarDetailsPage";
 import Header from "./components/Header/Header";
 import { CommonLoader } from "./components/CommonLoader/CommonLoader";
+import { ToastContainer, toast } from "react-toastify";
 
 const SharedLayout = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
           <Route path="catalog/:carId" element={<CarDetailsPage />} />
         </Route>
       </Routes>
+      <ToastContainer />
       <CommonLoader />
     </div>
   );

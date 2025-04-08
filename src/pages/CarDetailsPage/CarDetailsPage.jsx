@@ -2,10 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import css from "./CarDetailsPage.module.css";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePicker.css";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+  username: Yup.string().required("Обов'язкове поле"),
+  email: Yup.string().required("Обов'язкове поле"),
+  date: Yup.string().required("Обов'язкове поле"),
+});
 
 const makeLocation = (fullLocation) => {
   const splitedLocation = fullLocation.split(", ");
@@ -22,10 +30,22 @@ const CarDetailsPage = () => {
     date: null,
     message: "",
   };
+  const notifySuccsessSubmit = () =>
+    toast.success("Ви успішно забронювали авто!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+      icon: true,
+    });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    console.log(actions);
+    notifySuccsessSubmit();
   };
 
   useEffect(() => {
@@ -48,48 +68,72 @@ const CarDetailsPage = () => {
           <div className={css.carBrand}>
             <img src={carInfo.img} alt={carInfo.brand} />
           </div>
-          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
             <Form className={css.formConnected}>
               <h2 className={css.carTitle}>Book your car now</h2>
               <p className={css.subTitle}>
                 Stay connected! We are always ready to help you.
               </p>
-              <Field
-                className={css.fieldInput}
-                type="text"
-                name="username"
-                placeholder="Name*"
-              />
-              <Field
-                className={css.fieldInput}
-                type="email"
-                name="email"
-                placeholder="Email*"
-              />
-              <Field name="date">
-                {({
-                  field, // { name, value, onChange, onBlur }
-                  form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                  meta,
-                }) => {
-                  return (
-                    <div>
-                      <DatePicker
-                        selected={field.value}
-                        onChange={(date) => setFieldValue(field.name, date)}
-                        placeholderText="Booking date"
-                        className={css.fieldInput}
-                        dayClassName={(date) => css.calendarDate}
-                        calendarClassName={"calendar"}
-                        // calendarContainer={({ hildren }) => (
-                        //   <div className={css.calendarWraper}>{children}</div>
-                        // )}
-                      />
-                    </div>
-                  );
-                }}
-              </Field>
-
+              <div className={css.inputWrap}>
+                <Field
+                  className={css.fieldInput}
+                  type="text"
+                  name="username"
+                  placeholder="Name*"
+                />
+                <ErrorMessage
+                  component={"p"}
+                  className={css.error}
+                  name="username"
+                />
+              </div>
+              <div className={css.inputWrap}>
+                <Field
+                  className={css.fieldInput}
+                  type="email"
+                  name="email"
+                  placeholder="Email*"
+                />
+                <ErrorMessage
+                  component={"p"}
+                  className={css.error}
+                  name="email"
+                />
+              </div>
+              <div className={css.inputWrap}>
+                <Field name="date">
+                  {({
+                    field, // { name, value, onChange, onBlur }
+                    form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                    meta,
+                  }) => {
+                    return (
+                      <div>
+                        <DatePicker
+                          selected={field.value}
+                          onChange={(date) => setFieldValue(field.name, date)}
+                          placeholderText="Booking date"
+                          className={css.fieldInput}
+                          dayClassName={(date) => css.calendarDate}
+                          calendarClassName={"calendar"}
+                          // calendarContainer={({ hildren }) => (
+                          //   <div className={css.calendarWraper}>{children}</div>
+                          // )}
+                        />
+                      </div>
+                    );
+                  }}
+                </Field>
+                <ErrorMessage
+                  component={"p"}
+                  className={css.error}
+                  name="date"
+                />
+              </div>
               <Field
                 className={css.fieldComment}
                 type="text"
