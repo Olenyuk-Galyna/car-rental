@@ -8,8 +8,8 @@ function FavoriteBtn({ isFavorite, onClick }) {
         <use
           href={
             !isFavorite
-              ? "/public/icons/sprite.svg#icon-heart-default"
-              : "/public/icons/sprite.svg#icon-heart-active"
+              ? "/icons/sprite.svg#icon-heart-default"
+              : "/icons/sprite.svg#icon-heart-active"
           }
         ></use>
       </svg>

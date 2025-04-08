@@ -26,10 +26,12 @@ const Filters = () => {
 
   const handleChangeBrand = (brand) => {
     dispatch(setFilterAction({ name: "brand", value: brand }));
+    setIsBrandOpen(false);
   };
 
   const handleChangePrice = (price) => {
-    dispatch(setFilterAction({ name: "price", value: price }));
+    dispatch(setFilterAction({ name: "rentalPrice", value: price }));
+    setIsPriceOpen(false);
   };
 
   const handleSubmit = (e) => {
@@ -61,7 +63,7 @@ const Filters = () => {
           >
             {filter.brand || "Choose a brand"}
             <svg className={clsx(css.arrowIcon, isBrandOpen && css.rotate)}>
-              <use href="/public/icons/sprite.svg#icon-check-default"></use>
+              <use href="/icons/sprite.svg#icon-check-default"></use>
             </svg>
           </div>
 
@@ -91,7 +93,7 @@ const Filters = () => {
           >
             {filter.rentalPrice || "Choose Price"}
             <svg className={clsx(css.arrowIcon, isPriceOpen && css.rotate)}>
-              <use href="/public/icons/sprite.svg#icon-check-default"></use>
+              <use href="/icons/sprite.svg#icon-check-default"></use>
             </svg>
           </div>
 

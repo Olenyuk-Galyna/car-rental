@@ -110,7 +110,7 @@ const CarDetailsPage = () => {
             </p>
             <p className={css.carInfo}>
               <svg>
-                <use href="/public/icons/sprite.svg#icon-location"></use>
+                <use href="/icons/sprite.svg#icon-location"></use>
               </svg>
               <span className={css.addressLocation}>
                 {makeLocation(carInfo.address)}
@@ -129,7 +129,7 @@ const CarDetailsPage = () => {
               {carInfo.rentalConditions.map((el) => (
                 <li key={el} className={css.rentalConditionsList}>
                   <svg>
-                    <use href="/public/icons/sprite.svg#icon-check-circle"></use>
+                    <use href="/icons/sprite.svg#icon-check-circle"></use>
                   </svg>
                   <span> {el} </span>
                 </li>
@@ -141,25 +141,25 @@ const CarDetailsPage = () => {
             <ul>
               <li>
                 <svg>
-                  <use href="/public/icons/sprite.svg#icon-calendar"></use>
+                  <use href="/icons/sprite.svg#icon-calendar"></use>
                 </svg>
                 <span> Year: {carInfo.year} </span>
               </li>
               <li>
                 <svg>
-                  <use href="/public/icons/sprite.svg#icon-car"></use>
+                  <use href="/icons/sprite.svg#icon-car"></use>
                 </svg>
                 <span> Type: {carInfo.tupe}</span>
               </li>
               <li>
                 <svg>
-                  <use href="/public/icons/sprite.svg#icon-pump"></use>
+                  <use href="/icons/sprite.svg#icon-pump"></use>
                 </svg>
                 <span> Fuel Consumption: {carInfo.fuelConsumption}</span>
               </li>
               <li>
                 <svg>
-                  <use href="/public/icons/sprite.svg#icon-settings"></use>
+                  <use href="/icons/sprite.svg#icon-settings"></use>
                 </svg>
                 <span> Engine Size: {carInfo.engineSize}</span>
               </li>
@@ -174,7 +174,7 @@ const CarDetailsPage = () => {
                 (el) => (
                   <li key={el} className={css.accessoriesFuncionalList}>
                     <svg>
-                      <use href="/public/icons/sprite.svg#icon-check-circle"></use>
+                      <use href="/icons/sprite.svg#icon-check-circle"></use>
                     </svg>
                     <span> {el} </span>
                   </li>

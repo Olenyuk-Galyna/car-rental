@@ -6,7 +6,7 @@ const Logo = () => {
 
   return (
     <div className={css.logo}>
-      <img src="/public/imeges/logo-RentalCar.svg" alt="Logo" />
+      <img src="/imeges/logo-RentalCar.svg" alt="Logo" />
     </div>
   );
 };
